@@ -13,6 +13,52 @@ People Playground를 자연스러운 한국어로 플레이할 수 있게 해 �
 
 ---
 
+## 전/후 비교
+
+같은 장면을 영어 원본과 한국어 패치로 찍었습니다. (게임 안에서 `ALT+T`로 언제든 바꿔 볼 수 있습니다)
+
+<details open>
+<summary><b>메인 메뉴 · 맵 선택 · 설정</b></summary>
+
+**메인 메뉴**
+![메인 메뉴](docs/compare/01_menu.png)
+
+**맵 선택**
+![맵 선택](docs/compare/02_maps.png)
+
+**설정 (일반)**
+![설정](docs/compare/03_settings.png)
+
+**조작 설정**
+![조작 설정](docs/compare/04_controls.png)
+
+</details>
+
+<details open>
+<summary><b>게임 화면</b></summary>
+
+**아이템 설명 툴팁**
+![아이템 툴팁](docs/compare/05_item.png)
+
+**도구 툴팁**
+![도구 툴팁](docs/compare/06_tool.png)
+
+**사람 우클릭 메뉴**
+![사람 우클릭 메뉴](docs/compare/07_context.png)
+
+**신체 상세 보기**
+![신체 상세 보기](docs/compare/08_detail.png)
+
+**기계(자동차) 우클릭 메뉴**
+![자동차 우클릭 메뉴](docs/compare/09_machine.png)
+
+**일시 정지 메뉴**
+![일시 정지 메뉴](docs/compare/10_pause.png)
+
+</details>
+
+---
+
 ## 설치 방법
 
 1. 오른쪽 **[Releases](../../releases)** 에서 `PeoplePlayground-Korean-vX.X.zip`을 받습니다.
@@ -83,6 +129,14 @@ People Playground를 자연스러운 한국어로 플레이할 수 있게 해 �
 ```bash
 dotnet build plugin -c Release -p:GameDir="C:\Program Files (x86)\Steam\steamapps\common\People Playground"
 ```
+
+## 변경 내역
+
+- **v0.2**
+  - 아이템·도구 설명 일부가 영어로 나오던 문제를 고쳤습니다. 게임이 툴팁 끝에 마침표를 자동으로 붙여서 생긴 문제입니다.
+  - 저장한 장치의 버전 경고문(노란색), 호환되지 않는 장치 안내, 종 음 바꾸기 메뉴, 날개 전환 설명, 맵 입장 버튼을 번역했습니다.
+  - 게임 안에서 전수 조사한 결과, 아이템 290여 개의 툴팁과 우클릭 메뉴(버튼 4,400여 개와 그 설명)가 전부 한국어로 나옵니다. 영어로 남은 건 AK-47 같은 고유명사뿐입니다.
+- **v0.1**: 첫 배포
 
 ## 라이선스와 크레딧
 

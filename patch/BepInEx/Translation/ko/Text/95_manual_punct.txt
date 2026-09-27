@@ -1,0 +1,18 @@
+<align\="center"><#fff>LIQUID CONTENTS.=<align\="center"><#fff>액체 성분.
+SUBCRITICAL.=미임계.
+CRITICAL.=임계.
+SUPERCRITICAL.=초임계.
+Unable to delete.=삭제할 수 없습니다.
+Convert to a regular wing.=일반 날개로 바꾸기.
+Convert to a stabiliser.=안정판으로 바꾸기.
+Set winch lower limit.=윈치 하한 설정.
+Set winch upper limit.=윈치 상한 설정.
+Enable smoke.=연기 켜기.
+Disable smoke.=연기 끄기.
+Toggle smoke.=연기 전환.
+Enable fire.=불 켜기.
+Disable fire.=불 끄기.
+Toggle fire.=불 전환.
+Enable electricity.=전기 켜기.
+Disable electricity.=전기 끄기.
+Toggle electricity.=전기 전환.

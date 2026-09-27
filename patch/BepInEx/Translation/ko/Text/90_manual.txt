@@ -54,7 +54,7 @@ Toggle fire=불 전환
 Enable electricity=전기 켜기
 Disable electricity=전기 끄기
 Toggle electricity=전기 전환
-r:"^Set to ([A-G][#b]?\d)$"="음 설정: $1"
+sr:"^Set to (?<n_i>[^\r\n]+)(?<nl_i>\r?\n)?$"="${n_i} 음으로 바꾸기${nl_i}"
 
 // ── 모드 목록 ──
 sr:"^by <b>(?<a_i>[^<]*)</b> for (?<v_i>[^\r\n]+)$"="제작: <b>${a_i}</b> / 게임 버전 ${v_i}"
@@ -77,3 +77,13 @@ sr:"^(?<n_i>\d+) broken bones?$"="골절 ${n_i}곳"
 sr:"^(?<p_i>[\d.,]+)% burnt$"="화상 ${p_i}%"
 sr:"^(?<p_i>[\d.,]+)% rotted$"="부패 ${p_i}%"
 sr:"^(?<p_i>[\d.,]+)% skin damage$"="피부 손상 ${p_i}%"
+
+// ── 맵 선택 버튼 ──
+sr:"^Enter (?<m>[^\r\n]+)$"="${m} 입장"
+
+// ── 저장한 장치 (로컬 카테고리) ──
+<color\="yellow">This save is from a different version. This might cause issues.=<color\="yellow">다른 버전에서 저장한 장치입니다. 문제가 생길 수 있습니다.
+sr:"^This contraption is incompatible with your current version(?<nl_i>\r?\n)Target (?<t_i>[^,\r\n]+), Current (?<c_i>[^\r\n]+)$"="현재 게임 버전과 호환되지 않는 장치입니다${nl_i}저장 버전: ${t_i}, 현재 버전: ${c_i}"
+sr:"^Unfulfilled mod requirements:(?<nl_i>\r?\n)(?<l_i>[\s\S]*)$"="필요한 모드가 없습니다:${nl_i}${l_i}"
+sr:"^<b><size\=110%>(?<n_i>[^<]*)</size></b> <alpha\=#5A><size\=80%>for (?<v_i>[^\r\n]+)$"="<b><size\=110%>${n_i}</size></b> <alpha\=#5A><size\=80%>게임 버전 ${v_i}"
+sr:"^Deleted (?<n_i>[^\r\n]+)$"="삭제함: ${n_i}"
