@@ -1,0 +1,14 @@
+# Third-party notices
+
+The release zip contains the following unmodified third-party software:
+
+| Software | Version | License | Source |
+|---|---|---|---|
+| BepInEx (incl. Unity Doorstop, HarmonyX, MonoMod, Mono.Cecil) | 5.4.23.5 | LGPL-2.1 ([licenses/BepInEx-LICENSE.txt](licenses/BepInEx-LICENSE.txt)) | https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.5 |
+| XUnity.AutoTranslator (BepInEx build, incl. XUnity.ResourceRedirector) | 5.6.2 | MIT ([licenses/XUnity.AutoTranslator-LICENSE.txt](licenses/XUnity.AutoTranslator-LICENSE.txt)) | https://github.com/bbepis/XUnity.AutoTranslator/releases/tag/v5.6.2 |
+
+The source code for these projects is available at the links above.
+
+Fonts are not distributed. The plugin loads Malgun Gothic (`malgun.ttf`) from the user's Windows installation at runtime.
+
+People Playground and its original text are © Studio Minus. This project is not affiliated with Studio Minus.

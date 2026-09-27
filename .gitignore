@@ -1,0 +1,6 @@
+.build/
+plugin/bin/
+plugin/obj/
+*.zip
+*.pdb
+__pycache__/

@@ -1,0 +1,79 @@
+// People Playground 한국어 - 조합 문장용 수동 규칙
+// 분할 정규식(sr:)은 아래에 있을수록 우선순위가 높다. 범용 줄 분할을 맨 위에 둔다.
+
+// ── 범용: 여러 줄 텍스트를 한 줄씩 나눠 번역 ──
+sr:"^(?<first>[^\r\n]*)(?<nl_i>\r?\n)(?<rest>[\s\S]*)$"="${first}${nl_i}${rest}"
+
+// ── 아이템/카테고리 툴팁: <b>이름</b> + 줄바꿈 + 설명 ──
+sr:"^<b>(?<name>[^<\r\n]+)</b>(?<nl_i>\r?\n)(?<desc>[\s\S]+)$"="<b>${name}</b>${nl_i}${desc}"
+
+// ── 신체 상세 보기 ──
+sr:"^<b>(?<n_i>\d+) limbs selected</b>(?<nl_i>\r?\n)<color\=#FF5555>(?<st>[\s\S]*?)</color>(?<src>[\s\S]*)$"="<b>신체 부위 ${n_i}개 선택됨</b>${nl_i}<color\=#FF5555>${st}</color>${src}"
+
+// ── 액체 ──
+sr:"^<i>(?<n>[^<]+)</i>$"="<i>${n}</i>"
+sr:"^(?<p_i>\d+)% (?<n>[^\r\n]+)$"="${p_i}% ${n}"
+r:"^([\d.,]+) LITER$"="$1 리터"
+<align\="center"><#fff>LIQUID CONTENTS=<align\="center"><#fff>액체 성분
+<#222>(EMPTY)=<#222>(비어 있음)
+
+// ── 원자로 A5 화면 ──
+r:"^TEMPERATURE: ([^\r\n]+)$"="온도: $1"
+r:"^COOLING PUMPS: (\d+)%$"="냉각 펌프: $1%"
+r:"^CONTROL ROD DEPTH: (\d+)%$"="제어봉 깊이: $1%"
+r:"^POWER OUTPUT: (-?\d+) E$"="출력: $1 E"
+sr:"^REACTOR IS (?<s>[A-Z]+)$"="원자로 상태: ${s}"
+SUBCRITICAL=미임계
+CRITICAL=임계
+SUPERCRITICAL=초임계
+
+// ── 알림/메시지 ──
+sr:"^Hovering highlights have been (?<s>enabled|disabled)$"="마우스 오버 강조 표시: ${s}"
+sr:"^Achievement unlocked: (?<a>[^\r\n]+)$"="업적 달성: ${a}"
+sr:"^Now playing <color\=#ff54f9>(?<s_i>[^\r\n]*)</color>$"="재생 중: <color\=#ff54f9>${s_i}</color>"
+sr:"^<b>(?<n>[^<]+)</b> removed$"="<b>${n}</b> 제거됨"
+sr:"^<b>(?<n>[^<]+)</b> frozen again$"="<b>${n}</b> 다시 고정됨"
+sr:"^<b>(?<n>[^<]+)</b> unfrozen again$"="<b>${n}</b> 고정 다시 해제됨"
+sr:"^Changed to (?<t>[^\r\n]+) tab$"="${t} 탭으로 바꿈"
+sr:"^(?<t>[^\r\n<>]+) selected$"="${t} 선택됨"
+r:"^Deleted ([^\r\n]+)$"="삭제함: $1"
+r:"^Saved in version ([^\r\n]+)$"="저장한 버전: $1"
+Unable to delete=삭제할 수 없습니다
+
+// ── 우클릭 메뉴 조합 ──
+Convert to a regular wing=일반 날개로 바꾸기
+Convert to a stabiliser=안정판으로 바꾸기
+Set winch lower limit=윈치 하한 설정
+Set winch upper limit=윈치 상한 설정
+Enable smoke=연기 켜기
+Disable smoke=연기 끄기
+Toggle smoke=연기 전환
+Enable fire=불 켜기
+Disable fire=불 끄기
+Toggle fire=불 전환
+Enable electricity=전기 켜기
+Disable electricity=전기 끄기
+Toggle electricity=전기 전환
+r:"^Set to ([A-G][#b]?\d)$"="음 설정: $1"
+
+// ── 모드 목록 ──
+sr:"^by <b>(?<a_i>[^<]*)</b> for (?<v_i>[^\r\n]+)$"="제작: <b>${a_i}</b> / 게임 버전 ${v_i}"
+sr:"^<noparse>A mod by (?<a_i>[^\r\n]*) for game version (?<v_i>[^\r\n]+)</noparse>$"="<noparse>제작: ${a_i} / 게임 버전 ${v_i}</noparse>"
+sr:"^Do you want to upload\r?\n<b>(?<n_i>[\s\S]+)</b>\r?\nto the Workshop\?$"="<b>${n_i}</b>\n창작마당에 업로드할까요?"
+sr:"^Do you want to upload \"(?<n_i>[\s\S]+)\" to the workshop\?$"="“${n_i}”을(를) 창작마당에 업로드할까요?"
+
+// ── 튜토리얼 맵 (조작 키가 실제 키 이름으로 바뀐 뒤의 문장) ──
+sr:"^<color\=green>activate</color> objects with <color\=orange>(?<a_i>[^<]+)</color>(?<nl_i>\s+)<color\=green>rotate</color> objects with <color\=orange>(?<b_i>.+?) or (?<c_i>.+?) </color>$"="<color\=orange>${a_i}</color>로 물체 <color\=green>활성화</color>${nl_i}<color\=orange>${b_i} 또는 ${c_i} </color>로 물체 <color\=green>회전</color>"
+sr:"^<color\=orange>(?<a_i>[^<]+)</color> to <color\=green>delete</color>$"="<color\=orange>${a_i}</color>로 <color\=green>삭제</color>"
+sr:"^<color\=green>pan</color> with <color\=orange>(?<a_i>[^<]+)</color>$"="<color\=orange>${a_i}</color>로 <color\=green>화면 이동</color>"
+sr:"^<color\=orange>(?<a_i>.+?) or (?<b_i>.+?)</color> to <color\=green>spawn</color> objects(?<nl_i>\s+)hold <color\=orange>(?<c_i>[^<]+)</color> to <color\=green>grab</color>$"="<color\=orange>${a_i} 또는 ${b_i}</color>로 물체 <color\=green>생성</color>${nl_i}<color\=orange>${c_i}</color>을 누른 채로 <color\=green>잡기</color>"
+sr:"^<b>(?<a_i>[^<]+)</b> or <b>(?<b_i>[^<]+)</b>(?<nl_i>\r?\n)<size\=40>to spawn the selected item</size>$"="<b>${a_i}</b> 또는 <b>${b_i}</b>${nl_i}<size\=40>선택한 아이템 생성</size>"
+
+// ── 신체 부위 피해 줄 (가장 높은 우선순위) ──
+sr:"^(?<n_i>\d+) bruises?$"="타박상 ${n_i}곳"
+sr:"^(?<n_i>\d+) stab wounds?$"="자상 ${n_i}곳"
+sr:"^(?<n_i>\d+) gunshot wounds?$"="총상 ${n_i}곳"
+sr:"^(?<n_i>\d+) broken bones?$"="골절 ${n_i}곳"
+sr:"^(?<p_i>[\d.,]+)% burnt$"="화상 ${p_i}%"
+sr:"^(?<p_i>[\d.,]+)% rotted$"="부패 ${p_i}%"
+sr:"^(?<p_i>[\d.,]+)% skin damage$"="피부 손상 ${p_i}%"
