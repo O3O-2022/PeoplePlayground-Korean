@@ -61,6 +61,22 @@ People Playground를 자연스러운 한국어로 플레이할 수 있게 해 �
 
 ## 설치 방법
 
+### 방법 1: 설치 도우미 (추천)
+
+![설치 도우미](docs/installer.png)
+
+1. 오른쪽 **[Releases](../../releases)** 에서 `PeoplePlayground-Korean-Installer.exe`를 받아 실행합니다.
+2. Steam 라이브러리에서 게임 폴더를 자동으로 찾아 줍니다. 못 찾으면 **[찾아보기...]** 로 `People Playground.exe`가 있는 폴더를 고르세요.
+3. **[설치하기]** 를 누르면 끝입니다. **[게임 실행]** 으로 바로 확인할 수 있습니다.
+
+- 업데이트할 때도 새 설치 도우미로 **[다시 설치 / 업데이트]** 만 누르면 됩니다.
+- 지울 때는 **[제거하기]** 를 누르세요. 설치 도우미가 넣은 파일만 지우고, 다른 BepInEx 플러그인이 있으면 BepInEx 본체는 남겨 둡니다.
+- 게임 폴더에 다른 로더(`winhttp.dll`)가 있으면 `PPGKorean_backup` 폴더로 옮겨 두고 설치합니다.
+- 서명되지 않은 프로그램이라 Windows가 "PC 보호" 창을 띄울 수 있습니다. **추가 정보 → 실행**을 누르면 됩니다. 소스 코드는 [installer/](installer/)에 있습니다.
+- 게임이 `Program Files` 안에 있으면 관리자 권한을 요청합니다.
+
+### 방법 2: 직접 설치
+
 1. 오른쪽 **[Releases](../../releases)** 에서 `PeoplePlayground-Korean-vX.X.zip`을 받습니다.
 2. 게임 폴더를 엽니다.
    Steam 라이브러리 → People Playground 우클릭 → **관리** → **로컬 파일 보기**

@@ -4,3 +4,7 @@ plugin/obj/
 *.zip
 *.pdb
 __pycache__/
+dev/**/bin/
+dev/**/obj/
+installer/bin/
+installer/obj/

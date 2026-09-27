@@ -1,0 +1,410 @@
+[
+{
+"attr": "SettingAttribute",
+"where": "Preferences.CollisionQuality",
+"args": [
+"Collision quality",
+"Determines the quality of the collision detection. Discrete mode is much faster, but less accurate. Continuous mode prevents objects from passing through each other at high velocities. Dynamic mode switches between the two based on velocity."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.StopAnimationOnDamage",
+"args": [
+"Stop animation on damage",
+"When enabled, entities will reset their animation override if they are damaged. For example, a human will stop walking when shot."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.DropOnDeath",
+"args": [
+"Drop on death",
+"When enabled, humans and androids will drop objects when their arms aren't capable of holding on anymore. This is usually when they die or when their arms are shot. Default is on."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ShakeIntensity",
+"args": [
+"Screenshake intensity",
+"Adjust the intensity of the screenshake. Default is 1x."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ShowOutlines",
+"args": [
+"Show hovering highlights",
+"Toggle whether selection, freezing, and wire highlights are drawn or not. Useful for recording."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.SlowMotionSpeed",
+"args": [
+"Slow motion speed modifier",
+"Determines how much slower the time will pass in slow motion mode. Default is 20%."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.AmbientTemperatureTransfer",
+"args": [
+"Ambient temperature transfer",
+"Heat will travel through the air when this is enabled.\nIf disabled, heat can only be transferred through heat pipes and direct contact.\nThis setting may decrease performance when enabled. It is disabled by default."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.PhysicsIterations",
+"args": [
+"Physics iteration count",
+"Determines the amount of physics iterations for the physics simulation. Higher values cause the simulation to be more accurate at the cost of performance. Values greater than 128 may have diminishing returns. Default is 32."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.GridSnap",
+"args": [
+"Snap grid size",
+"The distance between grid points used for translational snapping. This helps in aligning objects more precisely by snapping their position to the nearest grid point. Default is 0.25 m"
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.AngleSnap",
+"args": [
+"Angle snap size",
+"The angle increment used for snapping during rotation. This helps in aligning objects more precisely by snapping their rotation to the nearest multiple of this value. Default is 15 degrees"
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ShowModLoadingFreeze",
+"args": [
+"Alert when mods significantly affect loading times",
+"When enabled, an alert will appear when mods cause increased loading times."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.RejectShadyCode",
+"args": [
+"Reject suspicious mods",
+"When enabled, the game will reject mods with suspicious code. Takes effect after restart. \n<color=#F55><b>It is recommended to keep this enabled. Mods that ask you to disable this setting should be reported."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.MaxModCompilationTime",
+"args": [
+"Maximum mod compilation time",
+"The maximum amount of seconds that a mod can compile for until it's skipped."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.GorelessMode",
+"args": [
+"Goreless",
+"No blood or obvious gore will be rendered when this is enabled."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ProceduralFragments",
+"args": [
+"Procedural fragments",
+"Enabling this will cause the generation of procedural flesh and bone fragments on full limb crush. This may cause performance issues when lots of limbs are destroyed."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.FragilityMultiplier",
+"args": [
+"Fragility multiplier",
+"The higher this value is the more fragile entities become."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.LimbCrushing",
+"args": [
+"Limb crushing",
+"Toggle whether limbs are fully destroyable or not. When enabled, limbs will turn into red mist under extreme pressure."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.BrainDamage",
+"args": [
+"Brain damage",
+"Toggle whether brain damage can occur. It causes organisms to occasionally pass out, fail to stand upright, and have seizures."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.LimbOverflowExplosion",
+"args": [
+"Liquid overflow limb exploding",
+"Toggle whether limbs explode when too full of liquid. Disabled by default. Will only take effect if limb crushing is enabled."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.GoreMode",
+"args": [
+"Gore shader",
+"Choose between different gore shaders."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.AutoHealWounds",
+"args": [
+"Slowly heal injuries",
+"Wounds and injuries will slowly heal on living organisms when this is enabled."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ChunkyShotParticles",
+"args": [
+"Extra shot impact particles",
+"Limbs with enough flesh on them may eject chunky particles when shot."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.DismembermentLooseTissue",
+"args": [
+"Dismemberment loose tissue",
+"Dismemberment of limbs may expose loose stringy tissue."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.CrushForceMultiplier",
+"args": [
+"Limb crushing sensitivity",
+"Determines how much force is needed to crush a limb. Default is 100%."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.BloomMode",
+"args": [
+"Bloom",
+"Bloom is a post processing effect that gives the illusion of objects being extremely bright."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.TracerBullets",
+"args": [
+"Bullet tracers",
+"Toggle whether bullets have travel time and display tracers. This degrades performance. Off by default."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.FancyEffects",
+"args": [
+"Fancy effects",
+"This will toggle relatively performance-heavy effects."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.Decals",
+"args": [
+"Decals",
+"Toggle whether decals are created. Disabling decals may improve performance."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.Lighting",
+"args": [
+"Lighting",
+"The lighting system makes dark areas actually dark, and makes light-emitting objects useful. Disabling lighting will make everything \"full bright\". Lighting has very little impact on performance."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.MasterVolume",
+"args": [
+"Master",
+"The volume of the entire application."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.SfxVolume",
+"args": [
+"Sound effects",
+"The volume of all items and effects in the game."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.UserInterfaceVolume",
+"args": [
+"User interface",
+"The volume of UI elements."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.AmbienceVolume",
+"args": [
+"Ambience",
+"The volume of the ambient hum and other background noises."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.AmbienceHighpassCutoff",
+"args": [
+"Ambience Highpass",
+"Highpass cutoff. Ambient audio will not play any audio below this frequency. This is useful if you suffer from crackling audio issues. 90 Hz is the default and recommended value here."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ClampVolume",
+"args": [
+"Clamp audio volume",
+"Audio can play at volumes that exceed set limits. It is recommended you keep this turned on to prevent hearing damage. You enable this at your own risk!"
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.DistantSoundEffects",
+"args": [
+"Distant sound effects",
+"When enabled, things like explosions and guns can be heard reflecting and echoing in the distance. Disabling this setting makes audio processing a bit less demanding."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.BulletCrackWhiz",
+"args": [
+"Bullet cracks and whizzes",
+"When enabled, supersonic bullets can make whip crack and whiz-by sounds."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.LogDebugMessages",
+"args": [
+"Log debug messages",
+"Debug messages will be logged as notifications in-game. Messages include warnings, errors, and unhandled exceptions. It is recommended to keep this off."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ShowFramerate",
+"args": [
+"Show framerate",
+"Displays the current framerate in the top-right of the screen."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ZoomSensitivity",
+"args": [
+"Zoom scroll wheel sensitivity",
+"Determines how fast zooming using the mouse wheel is. Default is 1x."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ThermalVisionUpdateRate",
+"args": [
+"Thermal vision update rate",
+"How often should the thermal vision be updated?"
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.DeleteWireByContextMenu",
+"args": [
+"Wires with context menu",
+"Toggle whether wires block the context menu for the underlying object."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.TemperatureUnit",
+"args": [
+"Temperature unit",
+"Determines the temperature unit used throughout the game. Celsius by default."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.VSync",
+"args": [
+"Vsync",
+"With Vsync turned on, the framerate will be capped to the refresh rate of your monitor. This minimises screen tearing."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.SMAA",
+"args": [
+"Anti-aliasing (SMAA)",
+"Anti-aliasing attempts to get rid of jagged edges."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.TonemappingMode",
+"args": [
+"Tonemapping",
+"Change the way HDR colours are displayed."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.Brightness",
+"args": [
+"Brightness",
+"Modify the final exposure value. Default is 100%"
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.RenderScale",
+"args": [
+"Render scale",
+"Downscale the resolution that the game is being rendered at.\n<b><color=#ff9>This only applies when the window mode is set to Borderless or Fullscreen."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.FramerateLimit",
+"args": [
+"Framerate limit",
+"Determine the upper bound of the framerate.\n<color=#ff9><b>This will only take effect if Vsync is disabled."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.SimplifiedBackground",
+"args": [
+"Simplified background tiles",
+"A simplified background may help decrease compression artifacts in screen recordings. Simplified rendering does not increase performance."
+]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.WindowMode",
+"args": [
+"Window mode",
+"Determines the way the window is presented."
+]
+}
+]

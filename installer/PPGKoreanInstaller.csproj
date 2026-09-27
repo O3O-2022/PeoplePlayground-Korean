@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    빌드: dotnet build installer -c Release -p:Payload="경로\PeoplePlayground-Korean-v0.2.zip"
+    Payload(배포용 zip)가 exe 안에 들어가서, exe 하나로 설치할 수 있다.
+    .NET Framework 4.8은 Windows 10/11에 기본으로 들어 있어 따로 설치할 필요가 없다.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>PeoplePlayground-Korean-Installer</AssemblyName>
+    <RootNamespace>PPGKoreanInstaller</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <DebugType>none</DebugType>
+    <Deterministic>true</Deterministic>
+    <Product>People Playground 한국어 패치 설치 도우미</Product>
+    <PatchVersion Condition="'$(PatchVersion)' == ''">0.2</PatchVersion>
+    <Version>$(PatchVersion)</Version>
+    <Payload Condition="'$(Payload)' == ''">..\.build\PeoplePlayground-Korean-v$(PatchVersion).zip</Payload>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <EmbeddedResource Include="$(Payload)" LogicalName="payload.zip" />
+  </ItemGroup>
+</Project>
