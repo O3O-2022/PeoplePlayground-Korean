@@ -100,7 +100,7 @@ namespace PPGKoreanInstaller
             }
             if (target == null) return "doorstop_config.ini에 대상이 적혀 있지 않은 로더";
             if (target.Replace('/', '\\').EndsWith(@"BepInEx\core\BepInEx.Preloader.dll", StringComparison.OrdinalIgnoreCase)) return null;
-            return "BepInEx가 아닌 다른 로더가 설치되어 있습니다 (" + target + ")";
+            return "BepInEx가 아닌 다른 로더가 설치되어 있습니다 (" + Path.GetFileName(target) + ")";
         }
 
         public bool CanWrite()
@@ -117,7 +117,78 @@ namespace PPGKoreanInstaller
         }
 
         // ── 게임 폴더 자동 찾기 (Steam 라이브러리 전체) ──
+        public const string AppId = "1118200";
+
+        /// <summary>
+        /// 게임 폴더 후보. Steam이 실제로 실행하는 폴더가 맨 앞에 온다.
+        /// 게임을 다른 드라이브로 옮기면 예전 폴더가 남아 있을 수 있는데, 거기 설치하면 한국어가 나오지 않는다.
+        /// </summary>
         public static List<string> FindGameDirs()
+        {
+            string active = SteamGameDir();
+            var found = new List<string>();
+            if (active != null) found.Add(active);
+            foreach (string dir in AllGameDirs())
+                if (!found.Contains(dir, StringComparer.OrdinalIgnoreCase)) found.Add(dir);
+            return found;
+        }
+
+        /// <summary>Steam이 이 게임을 설치해 둔(=실행하는) 폴더. libraryfolders.vdf에서 게임 번호가 적힌 라이브러리를 찾는다.</summary>
+        public static string SteamGameDir()
+        {
+            foreach (string root in SteamRoots())
+            {
+                string vdf = Path.Combine(root, @"steamapps\libraryfolders.vdf");
+                if (!File.Exists(vdf)) continue;
+                try
+                {
+                    string text = File.ReadAllText(vdf);
+                    MatchCollection paths = Regex.Matches(text, "\"path\"\\s+\"([^\"]+)\"");
+                    for (int i = 0; i < paths.Count; i++)
+                    {
+                        // 이 라이브러리 블록 = 이번 "path"부터 다음 "path" 전까지
+                        int start = paths[i].Index;
+                        int end = i + 1 < paths.Count ? paths[i + 1].Index : text.Length;
+                        if (!Regex.IsMatch(text.Substring(start, end - start), "\"" + AppId + "\"\\s+\"")) continue;
+                        string lib = paths[i].Groups[1].Value.Replace(@"\\", @"\");
+                        string dir = GameDirInLibrary(lib);
+                        if (dir != null) return dir;
+                    }
+                }
+                catch { }
+            }
+            return null;
+        }
+
+        /// <summary>라이브러리 안의 게임 폴더 (appmanifest의 installdir을 따른다)</summary>
+        private static string GameDirInLibrary(string lib)
+        {
+            string name = "People Playground";
+            try
+            {
+                string acf = Path.Combine(lib, @"steamapps\appmanifest_" + AppId + ".acf");
+                if (File.Exists(acf))
+                {
+                    Match m = Regex.Match(File.ReadAllText(acf), "\"installdir\"\\s+\"([^\"]+)\"");
+                    if (m.Success) name = m.Groups[1].Value;
+                }
+            }
+            catch { }
+            string dir = Path.Combine(lib, "steamapps", "common", name);
+            return IsGameDir(dir) ? dir : null;
+        }
+
+        public static bool SameDir(string a, string b)
+        {
+            if (string.IsNullOrEmpty(a) || string.IsNullOrEmpty(b)) return false;
+            try
+            {
+                return string.Equals(Path.GetFullPath(a).TrimEnd('\\'), Path.GetFullPath(b).TrimEnd('\\'), StringComparison.OrdinalIgnoreCase);
+            }
+            catch { return false; }
+        }
+
+        private static List<string> SteamRoots()
         {
             var steamRoots = new List<string>();
             foreach (var (hive, key, name) in new[]
@@ -138,9 +209,13 @@ namespace PPGKoreanInstaller
                 catch { }
             }
             steamRoots.Add(@"C:\Program Files (x86)\Steam");
+            return steamRoots.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        }
 
+        private static List<string> AllGameDirs()
+        {
             var libraries = new List<string>();
-            foreach (string root in steamRoots.Distinct(StringComparer.OrdinalIgnoreCase))
+            foreach (string root in SteamRoots())
             {
                 libraries.Add(root);
                 string vdf = Path.Combine(root, @"steamapps\libraryfolders.vdf");
@@ -165,10 +240,38 @@ namespace PPGKoreanInstaller
         // ── 설치 ──
         public static string PayloadVersion { get { return Program.PatchVersion; } }
 
-        public void Install()
+        /// <summary>그림 속 글자 한글화 조각이 들어 있는 폴더 (설치할 때 "글자만"을 고르면 넣지 않는다)</summary>
+        public const string ImageDirRel = @"BepInEx\Translation\ko\Image\";
+
+        public bool HasImages { get { return File.Exists(Path.Combine(_game, ImageDirRel + "index.txt")); } }
+
+        /// <summary>그림 번역이 생긴 v0.3 이후 버전을 설치하면서 "글자만"을 골랐는지 (v0.2 이하는 고를 수 없었으므로 false)</summary>
+        public bool TextOnlyChosen
+        {
+            get
+            {
+                string ver = InstalledVersion;
+                Version v;
+                return ver != null && !HasImages && ver.StartsWith("v") && Version.TryParse(ver.Substring(1), out v) && v >= new Version(0, 3);
+            }
+        }
+
+        /// <param name="images">false면 글자만 번역한다 (그림 조각을 넣지 않고, 전에 넣은 것은 지운다)</param>
+        public void Install(bool images)
         {
             if (GameRunning) throw new InvalidOperationException("게임이 실행 중입니다. 게임을 끈 뒤 다시 시도해 주세요.");
             if (!IsGameDir(_game)) throw new InvalidOperationException("선택한 폴더에 People Playground가 없습니다.");
+
+            if (!images)
+            {
+                string imageDir = Path.Combine(_game, ImageDirRel);
+                foreach (string rel in PayloadFiles().Where(IsImageFile))
+                {
+                    string full = Path.Combine(_game, rel);
+                    if (File.Exists(full)) File.Delete(full);
+                }
+                RemoveEmptyDirs(imageDir);
+            }
 
             string foreign = ForeignLoader();
             if (foreign != null)
@@ -192,7 +295,7 @@ namespace PPGKoreanInstaller
                 {
                     ZipArchiveEntry e = entries[i];
                     string rel = MapEntry(e.FullName.Replace('/', '\\'));
-                    if (rel != null)
+                    if (rel != null && (images || !IsImageFile(rel)))
                     {
                         string dst = Path.Combine(_game, rel);
                         Directory.CreateDirectory(Path.GetDirectoryName(dst));
@@ -205,7 +308,12 @@ namespace PPGKoreanInstaller
             var manifest = new List<string> { "version=" + PayloadVersion };
             manifest.AddRange(installed);
             File.WriteAllLines(Path.Combine(_game, ManifestRel), manifest, new UTF8Encoding(false));
-            _log("파일 " + installed.Count + "개를 설치했습니다.");
+            _log("파일 " + installed.Count + "개를 설치했습니다." + (images ? "" : " (글자만)"));
+        }
+
+        private static bool IsImageFile(string rel)
+        {
+            return rel.StartsWith(ImageDirRel, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>zip 안의 경로를 게임 폴더 안의 경로로 바꾼다. null이면 설치하지 않는다.</summary>

@@ -49,7 +49,11 @@ namespace PPGKorean
             _marker = new Font("KoreanFallbackMarker");
             DontDestroyOnLoad(_marker);
             Harmony.CreateAndPatchAll(typeof(KoreanFontPlugin), "kr.ppg.koreanfont");
-            SceneManager.sceneLoaded += (s, m) => RegisterFallbacks();
+            SceneManager.sceneLoaded += (s, m) =>
+            {
+                RegisterFallbacks();
+                _nextTextureScan = 0f;
+            };
         }
 
         private void Start()
@@ -60,6 +64,48 @@ namespace PPGKorean
             _collectPath = Path.Combine(Paths.BepInExRootPath, "PPGKorean_untranslated.txt");
             if (_collect && File.Exists(_collectPath))
                 foreach (string line in File.ReadAllLines(_collectPath)) _seen.Add(line);
+
+            bool textures = Config.Bind("Texture", "TranslateTextures", true,
+                "그림 속 글자(메뉴 제목, 표지판 등)도 한글로 바꿉니다. 그림 파일은 BepInEx\\Translation\\ko\\Image에 있습니다.").Value;
+            string imageDir = Path.Combine(Path.Combine(Path.Combine(Paths.BepInExRootPath, "Translation"), "ko"), "Image");
+            if (textures && Directory.Exists(imageDir))
+            {
+                _textures = TextureTranslator.Load(imageDir);
+                Log.LogInfo("그림 한글화 조각 " + _textures.PatchCount + "개를 불러왔습니다.");
+            }
+        }
+
+        // ── 그림 한글화 ──
+        private TextureTranslator _textures;
+        private float _nextTextureScan;
+        private static readonly System.Reflection.FieldInfo XUnityCurrent =
+            AccessTools.Field(typeof(XUnity.AutoTranslator.Plugin.Core.AutoTranslationPlugin), "Current");
+        private static readonly System.Reflection.FieldInfo XUnityTranslatedMode =
+            AccessTools.Field(typeof(XUnity.AutoTranslator.Plugin.Core.AutoTranslationPlugin), "_isInTranslatedMode");
+
+        /// <summary>XUnity가 지금 번역을 보여 주는 중인지 (ALT+T로 바뀐다). 알 수 없으면 true.</summary>
+        private static bool TextTranslated()
+        {
+            try
+            {
+                object cur = XUnityCurrent == null ? null : XUnityCurrent.GetValue(null);
+                return cur == null || XUnityTranslatedMode == null || (bool)XUnityTranslatedMode.GetValue(cur);
+            }
+            catch (Exception) { return true; }
+        }
+
+        private void UpdateTextures()
+        {
+            if (_textures == null) return;
+            _textures.SetTranslated(TextTranslated());
+            if (Time.unscaledTime < _nextTextureScan) return;
+            _nextTextureScan = Time.unscaledTime + 2f;
+            try { _textures.Scan(); }
+            catch (Exception e)
+            {
+                Log.LogWarning("그림 한글화 중 오류, 그림 한글화를 끕니다: " + e);
+                _textures = null;
+            }
         }
 
         private static readonly HashSet<string> _seen = new HashSet<string>();
@@ -75,6 +121,7 @@ namespace PPGKorean
         private void Update()
         {
             CheckDebugRequest();
+            UpdateTextures();
             if (!_collect || Time.unscaledTime < _nextScan) return;
             _nextScan = Time.unscaledTime + 3f;
             try

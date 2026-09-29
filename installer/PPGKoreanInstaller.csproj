@@ -17,7 +17,7 @@
     <DebugType>none</DebugType>
     <Deterministic>true</Deterministic>
     <Product>People Playground 한국어 패치 설치 도우미</Product>
-    <PatchVersion Condition="'$(PatchVersion)' == ''">0.2</PatchVersion>
+    <PatchVersion Condition="'$(PatchVersion)' == ''">0.3</PatchVersion>
     <Version>$(PatchVersion)</Version>
     <Payload Condition="'$(Payload)' == ''">..\.build\PeoplePlayground-Korean-v$(PatchVersion).zip</Payload>
   </PropertyGroup>
@@ -25,5 +25,8 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <EmbeddedResource Include="$(Payload)" LogicalName="payload.zip" />
+    <!-- 번역 범위 미리보기 (dev/texture/make_textures.py가 만든다) -->
+    <EmbeddedResource Include="preview\text.png" LogicalName="preview_text.png" />
+    <EmbeddedResource Include="preview\image.png" LogicalName="preview_image.png" />
   </ItemGroup>
 </Project>

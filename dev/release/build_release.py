@@ -94,10 +94,15 @@ def main():
     exe = os.path.join(BUILD, "installer", "PeoplePlayground-Korean-Installer.exe")
 
     # 7) 개인 정보(사용자 폴더 경로)가 들어가지 않았는지 검사
-    user = os.path.basename(os.path.expanduser("~")).encode()
+    #    사용자 이름만 찾으면 "User" 같은 이름은 CurrentUser 등에 걸리므로 경로 모양으로 찾는다
+    home = os.path.expanduser("~")
+    user = os.path.basename(home)
+    needles = [home, home.replace("\\", "/"), "\\" + user + "\\", "/" + user + "/"]
     for path in [zpath, exe, os.path.join(dst, "PPGKoreanFont.dll")]:
-        if user and user in open(path, "rb").read():
-            sys.exit("경고: %s 안에 사용자 이름이 들어 있습니다" % path)
+        data = open(path, "rb").read()
+        for n in needles:
+            if n.encode("utf-8") in data or n.encode("utf-16-le") in data:
+                sys.exit("경고: %s 안에 사용자 폴더 경로가 들어 있습니다" % path)
     print("installer:", exe, os.path.getsize(exe), "bytes")
     print("완료. GitHub 릴리스에 zip과 exe를 올리세요.")
 

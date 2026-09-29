@@ -1,0 +1,14 @@
+# 그림 속 글자 한글화 조각 (dev/texture/make_textures.py가 만든다. 직접 고치지 말 것)
+# 텍스처이름<TAB>너비<TAB>높이<TAB>x<TAB>y<TAB>조각 파일<TAB>원본 확인 파일
+# x, y는 그림 왼쪽 위 기준. 원본 확인 파일과 게임 그림이 다르면(게임 업데이트) 그 조각은 건너뛴다.
+logo	922	71	0	0	logo.png	logo.orig.png
+EscToExit_Text	267	20	0	0	esc_to_exit.png	esc_to_exit.orig.png
+OpenClosed	256	51	9	14	open_closed.png	open_closed.orig.png
+sactx-0-1024x512-Uncompressed-Small items-c93c2043	1024	512	715	328	weight.png	weight.orig.png
+sactx-0-1024x512-Uncompressed-Small items-c93c2043	1024	512	967	494	weight_rusty.png	weight_rusty.orig.png
+sactx-0-1024x512-Uncompressed-Small items-c93c2043	1024	512	906	425	weight_cream.png	weight_cream.orig.png
+1000kg Weight	256	256	77	91	thumb_weight.png	thumb_weight.orig.png
+gevaar ziekelijk warm	35	21	0	2	danger_sign.png	danger_sign.orig.png
+Display	256	256	57	96	thumb_display.png	thumb_display.orig.png
+Key Trigger	256	256	94	93	thumb_key_trigger.png	thumb_key_trigger.orig.png
+ErrorWhileLoadingThumbnail	512	512	38	183	thumbnail_error.png	thumbnail_error.orig.png
