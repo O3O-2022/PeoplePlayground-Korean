@@ -1,6 +1,7 @@
 # People Playground 한국어 패치 (비공식)
 
 People Playground를 자연스러운 한국어로 플레이할 수 있게 해 주는 비공식 팬 번역 패치입니다.
+후원하기: https://ko-fi.com/zip_yogurt
 
 ![게임 화면](docs/screenshot.png)
 
