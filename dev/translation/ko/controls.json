@@ -57,5 +57,7 @@
 "Camera": "카메라",
 "General": "일반",
 "MapEditor": "맵 에디터",
-"UserInterface": "사용자 인터페이스"
+"UserInterface": "사용자 인터페이스",
+"Flip object": "물체 뒤집기",
+"Toggle wire invisibility": "전선 투명화 전환"
 }

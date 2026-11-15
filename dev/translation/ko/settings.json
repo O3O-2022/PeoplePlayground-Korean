@@ -50,12 +50,14 @@
 "FramerateLimit": ["프레임 레이트 제한", "프레임 레이트의 상한을 정합니다.\n<color=#ff9><b>수직 동기화가 꺼져 있을 때만 적용됩니다."],
 "SimplifiedBackground": ["단순화된 배경 타일", "배경을 단순화하면 화면 녹화의 압축 노이즈를 줄이는 데 도움이 됩니다. 단순화해도 성능은 좋아지지 않습니다."],
 "WindowMode": ["창 모드", "창을 표시하는 방식을 정합니다."],
+"ToolSelectionMode": ["선택 방식", "어떤 방법으로 선택할 물체를 정할지 고릅니다. 질량은 질량이 가장 작은 물체를, 면적은 전체 면적이 가장 작은 물체를, 깊이는 그리는 순서가 가장 위인 물체를 고릅니다. 쉽게 말해 보통은 눈에 가장 먼저 보이는 물체를 고릅니다."],
 "__enums": {
   "Discrete": "불연속", "Continuous": "연속", "Dynamic": "동적",
   "Default": "기본", "Legacy": "레거시",
   "Off": "끔", "Fast": "빠름", "Fancy": "고급",
   "Celsius": "섭씨", "Fahrenheit": "화씨", "Kelvin": "켈빈",
   "Modern": "모던",
-  "Windowed": "창 모드", "Borderless": "테두리 없음", "Fullscreen": "전체 화면"
+  "Windowed": "창 모드", "Borderless": "테두리 없음", "Fullscreen": "전체 화면",
+  "Mass": "질량", "Area": "면적", "Depth": "깊이"
 }
 }

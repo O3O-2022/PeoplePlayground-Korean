@@ -406,5 +406,13 @@
 "Window mode",
 "Determines the way the window is presented."
 ]
+},
+{
+"attr": "SettingAttribute",
+"where": "Preferences.ToolSelectionMode",
+"args": [
+"Selection mode",
+"Determines what method is used to get which object is selected. Mass picks the object with the smallest mass. Area picks the object with the smallest overall area. Depth picks the object with the highest sorting order. Basically, picks the first object you see, usually."
+]
 }
 ]
