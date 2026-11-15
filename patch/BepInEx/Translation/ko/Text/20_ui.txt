@@ -113,7 +113,7 @@ Toggle collisions=충돌 전환
 OXygen=산소
 Paste=붙여넣기
 restart=다시 시작
-<b>Environment</b>\n<size\=80%>Edit the current environment settings\\nSome maps don't support some settings</size>=<b>환경</b>\n<size\=80%>현재 환경 설정을 바꿉니다\\n일부 맵은 일부 설정을 지원하지 않습니다</size>
+<b>Environment</b>\n<size\=80%>Edit the current environment settings\\nSome maps don't support some settings</size>=<b>환경</b>\n<size\=80%>현재 환경 설정을 바꿉니다\n일부 맵은 일부 설정을 지원하지 않습니다</size>
 this is a title=제목
 this is a notification\n=알림\n
 He forgot to add a title=제목을 깜빡했네요
@@ -440,7 +440,7 @@ Toggle collisions.=충돌 전환.
 OXygen.=산소.
 Paste.=붙여넣기.
 restart.=다시 시작.
-<b>Environment</b>\n<size\=80%>Edit the current environment settings\\nSome maps don't support some settings</size>.=<b>환경</b>\n<size\=80%>현재 환경 설정을 바꿉니다\\n일부 맵은 일부 설정을 지원하지 않습니다</size>.
+<b>Environment</b>\n<size\=80%>Edit the current environment settings\\nSome maps don't support some settings</size>.=<b>환경</b>\n<size\=80%>현재 환경 설정을 바꿉니다\n일부 맵은 일부 설정을 지원하지 않습니다</size>.
 this is a title.=제목.
 this is a notification.=알림.
 He forgot to add a title.=제목을 깜빡했네요.
