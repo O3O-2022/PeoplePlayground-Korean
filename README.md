@@ -12,7 +12,7 @@ People Playground를 자연스러운 한국어로 플레이할 수 있게 해 �
 - **한글 폰트**: 윈도우 기본 폰트인 맑은 고딕을 자동으로 불러와 한글을 표시합니다 (폰트 파일을 따로 받을 필요 없음)
 - **게임 파일을 고치지 않음**: 원본 게임 파일은 그대로 두고, 실행 중에 화면 글자만 바꿉니다. 지우면 바로 원래대로 돌아갑니다
 
-> 게임 버전 **1.27.18** 기준입니다. Windows 전용입니다.
+> 게임 버전 **1.28.41** 기준입니다. Windows 전용입니다.
 
 ---
 
@@ -171,6 +171,11 @@ dotnet build plugin -c Release -p:GameDir="C:\Program Files (x86)\Steam\steamapp
 
 ## 변경 내역
 
+- **v0.4** (게임 1.28 대응)
+  - 새 아이템 레일건, 빔 리피터, 음극 조명과 바뀐 온도계 설명을 번역했습니다.
+  - 새 설정 "선택 방식"(질량/면적/깊이), 새 조작키(물체 뒤집기, 전선 투명화 전환), 부술 수 있는 스프링 도구를 번역했습니다.
+  - 맵 환경 설정(투광등, 비, 안개, 중력, 번개 확률, 주변 온도)과 툴팁, 전선 투명화 버튼, 대화상자 버튼, 모드 화면과 로딩 문구를 번역했습니다.
+  - 환경 설정 패널 부제목에 `\n`이 그대로 보이던 것을 줄바꿈으로 고쳤습니다.
 - **v0.3**
   - 그림 속 글자 번역: 로딩 화면 제목 로고, 전체 화면 안내, 밸브 표시판, 1톤 추, 경고판, 아이템 아이콘(텍스트 디스플레이, 키 트리거, 1000kg 추), 썸네일 오류 그림. `ALT+T`로 그림도 영어와 전환됩니다.
   - 게임 제목을 메인 메뉴와 로딩 화면 모두 "피플 플레이그라운드"로 맞췄습니다.
@@ -194,6 +199,6 @@ dotnet build plugin -c Release -p:GameDir="C:\Program Files (x86)\Steam\steamapp
 
 ### English
 
-Unofficial Korean translation patch for **People Playground** (game version 1.27.18, Windows).
+Unofficial Korean translation patch for **People Playground** (game version 1.28.41, Windows).
 It is built on BepInEx 5 and XUnity.AutoTranslator and includes about 1,500 hand-translated strings. It also includes a small plugin that registers Malgun Gothic as a TextMeshPro fallback font and replaces English text baked into a few textures (title logo, signs, icons) with Korean.
 To install, extract the release zip into the game folder, next to `People Playground.exe`. To uninstall, delete `winhttp.dll`, `doorstop_config.ini`, `.doorstop_version` and the `BepInEx` folder.

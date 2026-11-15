@@ -58,7 +58,7 @@ namespace PPGKoreanInstaller
             };
             var sub = new Label
             {
-                Text = "비공식 팬 번역 " + Program.PatchVersion + "  ·  게임 버전 1.27.18 기준",
+                Text = "비공식 팬 번역 " + Program.PatchVersion + "  ·  게임 버전 1.28.41 기준",
                 ForeColor = Color.DimGray, AutoSize = true, Location = new Point(22, 50)
             };
 

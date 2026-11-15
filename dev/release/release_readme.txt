@@ -1,5 +1,5 @@
 People Playground 한국어 패치 (비공식) {version}
-게임 버전 1.27.18 기준 / Windows 전용
+게임 버전 1.28.41 기준 / Windows 전용
 https://github.com/O3O-2022/PeoplePlayground-Korean
 
 [설치]
